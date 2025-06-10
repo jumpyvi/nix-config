@@ -10,6 +10,7 @@
       ../modules/sys/virt.nix
       ../modules/sys/lang.nix
       ../modules/sys/audio.nix
+      ../modules/sys/units/updates/nix-update.nix
     ];
 
   boot.loader.systemd-boot.enable = true;

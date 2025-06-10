@@ -1,31 +1,22 @@
+{ config, inputs, ... }:
 {
-    systemd.timers."update-nix" = {
-        wantedBy = [ "timers.target" ];
-            timerConfig = {
-            OnCalendar = "Sun *-*-* 10:00:00 America/New_York";
-            Unit = "update-nix.service";
-            };
+    system.autoUpgrade = {
+        enable = true;
+        flake = inputs.self.outPath;
+        flags = [
+        "--update-input"
+        "nixpkgs"
+        "--no-write-lock-file"
+        "-L"
+        ];
+        operation = "boot";
+        dates = "Sun 03:00";
+        randomizedDelaySec = "45min";
     };
 
-    systemd.services."update-nix" = {
-        script = ''
-            set -eu
-
-            export FLAKE_PATH="/home/jumpyvi/.nix-system/systems"
-            export HOSTNAME="$(hostname)"
-
-            echo "Updating flake inputs..."
-            nix flake update --flake "$FLAKE_PATH"
-
-            echo "Rebuilding system..."
-            nixos-rebuild boot --flake "$FLAKE_PATH#$HOSTNAME"
-
-            echo "System update complete."
-        '';
-        serviceConfig = {
-            Type = "oneshot";
-            User = "root";
-            RemainAfterExit = true;
-        };
+    nix.gc = {
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 3d";
     };
 }

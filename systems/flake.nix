@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, chaotic, home-manager, ... }:
+  outputs = { self, nixpkgs, chaotic, home-manager, ... }@inputs :
   let
      system = "x86_64_linux";
 
@@ -25,7 +25,7 @@
      {
      nixosConfigurations = {
      	magnesium = nixpkgs.lib.nixosSystem {
-	  specialArgs = {inherit system; };
+	  specialArgs = {inherit system inputs; };
 
 	  modules = [
 	    chaotic.nixosModules.default
