@@ -17,6 +17,9 @@
     nix-output-monitor
     vscode
     ghostty
+    rustic
+    rclone
+    vesktop
 
     # Gaming
     prismlauncher

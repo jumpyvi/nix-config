@@ -12,12 +12,11 @@
       ../modules/sys/audio.nix
       ../modules/sys/units/updates/nix-update.nix
     ];
-
+  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-
 
   networking.hostName = "magnesium";
 
@@ -28,6 +27,10 @@
      gamemode
      tpm2-tss
   ];
+
+  nixpkgs.config.packagesOverrides = pkgs:{
+    nordvpn = pkgs.callPackage /home/jumpyvi/.nix-system/systems/magnesium/nord.nix { };
+  };
 
 
   system.stateVersion = "25.05";
