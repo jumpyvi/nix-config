@@ -11,6 +11,8 @@
         ripgrep
         eza
         fzf
+        starship
+        zoxide
         which
         gnused
         gnutar
