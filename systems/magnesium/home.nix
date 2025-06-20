@@ -20,6 +20,7 @@
     rustic
     rclone
     vesktop
+    mission-center
 
     # Gaming
     prismlauncher
