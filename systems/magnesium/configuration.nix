@@ -5,6 +5,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../modules/sys/gnome.nix
+      ../modules/sys/docker.nix
       ../modules/sys/jumpyvi.nix
       ../modules/sys/nordvpn.nix
       ../modules/sys/virt.nix

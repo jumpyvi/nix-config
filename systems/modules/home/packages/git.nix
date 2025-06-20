@@ -8,5 +8,11 @@
         enable = true;
         userName = "JumpyVi";
         userEmail = "jumpyvi@outlook.com";
+        extraConfig = {
+            core = {
+              editor = "code --wait";
+            };
+	                
+        };
     };
 }

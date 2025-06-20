@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, configFilesDir, ... }:
 
 {
   imports =
@@ -23,7 +23,12 @@
 
     # Gaming
     prismlauncher
+
+    # Text / IDE
+    obsidian
   ];
+
+  home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;
 
   # starship - an customizable prompt for any shell
   programs.starship = {

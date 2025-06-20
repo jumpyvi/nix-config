@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, configFilesDir, ... }:
 {
     home.packages = with pkgs; [
         fastfetch
@@ -16,5 +16,10 @@
         gnutar
         gawk
         gnupg
+        gccgo15
     ];
+
+    xdg.configFile."nvim".source = configFilesDir + /cli-tools/nvim;
+    xdg.configFile."fish".source = configFilesDir + /cli-tools/fish;
+
 }

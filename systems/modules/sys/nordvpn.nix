@@ -4,17 +4,9 @@
   environment.systemPackages = with pkgs; [
      nordvpn
   ];
-  environment.etc."hosts".enable = false;
+  #environment.etc."hosts".enable = false;
 
-  system.activationScripts.ensureEtcHosts.text = ''
-    if [ ! -e /etc/hosts ]; then
-      echo "Creating default /etc/hosts"
-      cat > /etc/hosts <<EOF
-127.0.0.1       localhost
-::1             localhost
-EOF
-    fi
-  '';
+  environment.etc.hosts.mode = "0644";
 
   chaotic.nordvpn.enable = true;
   networking.firewall.checkReversePath = false;

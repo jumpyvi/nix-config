@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, configFilesDir, ... }:
 {
     home.packages = with pkgs; [
         distrobox
@@ -7,4 +7,6 @@
         docker
         docker-compose
     ];
+
+    home.file.".config/containers/policy.json".source = configFilesDir + /containers/container-policy.json;
 }

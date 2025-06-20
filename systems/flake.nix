@@ -13,6 +13,7 @@
   outputs = { self, nixpkgs, chaotic, home-manager, ... }@inputs :
   let
      system = "x86_64_linux";
+     configFilesDir = ./config-files;
 
      pkgs = import nixpkgs {
       inherit system;
@@ -21,22 +22,23 @@
       };
      };
 
-     in
+  in
      {
-     nixosConfigurations = {
-     	magnesium = nixpkgs.lib.nixosSystem {
-	  specialArgs = {inherit system inputs; };
+    nixosConfigurations = {
+    magnesium = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit system inputs configFilesDir; };
 
-	  modules = [
-	    chaotic.nixosModules.default
-      ./magnesium/configuration.nix
-	    home-manager.nixosModules.home-manager
-	    {
-	     home-manager.useGlobalPkgs = true;
-	     home-manager.useUserPackages = true;
-	     home-manager.users.jumpyvi = import ./magnesium/home.nix;
-	    }
-	  ];
+      modules = [
+        chaotic.nixosModules.default
+              ./magnesium/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.jumpyvi = import ./magnesium/home.nix;
+        home-manager.extraSpecialArgs = { inherit configFilesDir; };
+        }
+      ];
 	};
      };
      };
