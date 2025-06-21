@@ -11,6 +11,7 @@
       yelp        # help viewer
       geary       # email client
       seahorse    # password manager
+      gnome-console # terminal emulator
 
       # these should be self explanatory
       gnome-calendar gnome-characters gnome-clocks gnome-contacts

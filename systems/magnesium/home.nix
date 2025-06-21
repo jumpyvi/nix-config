@@ -3,12 +3,13 @@
 {
   imports =
     [
-      ../modules/home/jumpyvi.nix
-      ../modules/home/packages/always-cli.nix
-      ../modules/home/packages/firefox.nix
-      ../modules/home/packages/containers.nix
-      ../modules/home/packages/gnome-extras.nix
-      ../modules/home/packages/git.nix
+      ../../modules/home/jumpyvi.nix
+      ../../modules/home/packages/always-cli.nix
+      ../../modules/home/packages/firefox.nix
+      ../../modules/home/packages/containers.nix
+      ../../modules/home/packages/gnome-extras.nix
+      ../../modules/home/packages/git.nix
+      ../../modules/home/packages/onedrive.nix
     ];
 
   # Packages that should be installed to the user profile.

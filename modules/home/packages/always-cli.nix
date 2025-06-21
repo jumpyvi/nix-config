@@ -19,6 +19,8 @@
         gawk
         gnupg
         gccgo15
+        nh
+        chafa
     ];
 
     xdg.configFile."nvim".source = configFilesDir + /cli-tools/nvim;

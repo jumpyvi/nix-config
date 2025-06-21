@@ -13,7 +13,7 @@
   outputs = { self, nixpkgs, chaotic, home-manager, ... }@inputs :
   let
      system = "x86_64_linux";
-     configFilesDir = ./config-files;
+     configFilesDir = ../config-files;
 
      pkgs = import nixpkgs {
       inherit system;

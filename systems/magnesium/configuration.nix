@@ -4,14 +4,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../modules/sys/gnome.nix
-      ../modules/sys/docker.nix
-      ../modules/sys/jumpyvi.nix
-      ../modules/sys/nordvpn.nix
-      ../modules/sys/virt.nix
-      ../modules/sys/lang.nix
-      ../modules/sys/audio.nix
-      ../modules/sys/units/updates/nix-update.nix
+      ../../modules/root/gnome.nix
+      ../../modules/root/docker.nix
+      ../../modules/root/jumpyvi.nix
+      ../../modules/root/nordvpn.nix
+      ../../modules/root/virt.nix
+      ../../modules/root/lang.nix
+      ../../modules/root/audio.nix
+      ../../modules/root/units/updates/nix-update.nix
     ];
   
   boot.loader.systemd-boot.enable = true;
@@ -25,15 +25,16 @@
   services.printing.enable = true;
   home-manager.backupFileExtension = "backup";
 
+  zramSwap.enable = true;
+
+
   environment.systemPackages = with pkgs; [
      gamemode
      tpm2-tss
+     nixfmt
+     nautilus-python
+     code-nautilus
   ];
-
-  nixpkgs.config.packagesOverrides = pkgs:{
-    nordvpn = pkgs.callPackage /home/jumpyvi/.nix-system/systems/magnesium/nord.nix { };
-  };
-
 
   system.stateVersion = "25.05";
 }
