@@ -47,14 +47,25 @@
         "gnome-fuzzy-app-search@gnome-shell-extensions.Czarlie.gitlab.com"
       ];
     };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
+      toggle-fullscreen = [ "<Shift><Super>w" ];
+      toggle-maximized = [ "<Super>w" ];
+
+    };
   };
 
   gtk = {
     enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
     #Icon Theme
     iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
+      package = pkgs.morewaita-icon-theme;
+      name = "MoreWaita";
       };
   };
 }

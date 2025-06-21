@@ -23,6 +23,7 @@
 
   networking.networkmanager.enable = true;
   services.printing.enable = true;
+  home-manager.backupFileExtension = "backup";
 
   environment.systemPackages = with pkgs; [
      gamemode
