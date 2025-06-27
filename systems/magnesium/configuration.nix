@@ -21,6 +21,8 @@
 
   networking.hostName = "magnesium";
 
+  services.flatpak.enable = true;
+
   networking.networkmanager.enable = true;
   services.printing.enable = true;
   home-manager.backupFileExtension = "backup";

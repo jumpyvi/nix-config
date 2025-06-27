@@ -1,8 +1,9 @@
-{ config, pkgs, configFilesDir, ... }:
+{ config, pkgs, configFilesDir, nix-flatpak, ... }:
 
 {
   imports =
     [
+      ../../modules/home/packages/flatpaks.nix
       ../../modules/home/jumpyvi.nix
       ../../modules/home/packages/always-cli.nix
       ../../modules/home/packages/firefox.nix
@@ -32,6 +33,7 @@
     # Text / IDE
     obsidian
     vscode-fhs
+    flatpak
   ];
 
   home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;

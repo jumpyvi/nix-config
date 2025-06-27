@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -10,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, chaotic, home-manager, ... }@inputs :
+  outputs = { self, nixpkgs, chaotic, home-manager, nix-flatpak, ... }@inputs :
   let
      system = "x86_64_linux";
      configFilesDir = ./config-files;
@@ -37,6 +38,9 @@
         home-manager.useUserPackages = true;
         home-manager.users.jumpyvi = import ./systems/magnesium/home.nix;
         home-manager.extraSpecialArgs = { inherit configFilesDir; };
+        home-manager.sharedModules = [
+              nix-flatpak.homeManagerModules.nix-flatpak
+            ];
         }
       ];
 	};

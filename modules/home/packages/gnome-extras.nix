@@ -6,6 +6,8 @@
         gnome-extension-manager
         gnomeExtensions.appindicator
         gnomeExtensions.fuzzy-app-search
+        gnomeExtensions.pip-on-top
+        adw-gtk3
     ];
 
     # dconf watch /
@@ -36,6 +38,7 @@
 
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-theme = "adw-gtk3-dark";
     };
         "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -45,6 +48,7 @@
         "bottom-overview@fthx"
         "appindicatorsupport@rgcjonas.gmail.com"
         "gnome-fuzzy-app-search@gnome-shell-extensions.Czarlie.gitlab.com"
+        "pip-on-top@rafostar.github.com"
       ];
     };
 
@@ -58,10 +62,6 @@
 
   gtk = {
     enable = true;
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
     #Icon Theme
     iconTheme = {
       package = pkgs.morewaita-icon-theme;

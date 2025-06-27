@@ -16,7 +16,7 @@
       # these should be self explanatory
       gnome-calendar gnome-characters gnome-clocks gnome-contacts
       gnome-font-viewer gnome-logs gnome-maps gnome-music gnome-photos
-      gnome-system-monitor pkgs.gnome-connections
+      gnome-system-monitor gnome-connections gnome-software
     ];
 
   services.gnome.gnome-keyring.enable = true;
