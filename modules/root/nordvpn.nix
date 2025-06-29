@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
      nordvpn
   ];
+  
   #environment.etc."hosts".enable = false;
 
   environment.etc.hosts.mode = "0644";

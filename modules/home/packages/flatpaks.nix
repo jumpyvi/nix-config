@@ -4,7 +4,7 @@
     services.flatpak.update.onActivation = true;
 
     services.flatpak.remotes = lib.mkOptionDefault [{
-    name = "flathub-nix";
+    name = "flathub";
     location = "https://flathub.org/repo/flathub.flatpakrepo";
   }];
 

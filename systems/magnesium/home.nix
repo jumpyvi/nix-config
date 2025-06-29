@@ -1,4 +1,4 @@
-{ config, pkgs, configFilesDir, nix-flatpak, ... }:
+{ config, pkgs, configFilesDir, services, nix-flatpak, ... }:
 
 {
   imports =
@@ -19,7 +19,6 @@
     nix-output-monitor
 
     # System
-    ghostty
     rustic
     rclone
     equibop
@@ -27,16 +26,20 @@
 
     # Gaming
     prismlauncher
-    steam
     lutris
+    gamescope
 
     # Text / IDE
     obsidian
     vscode-fhs
     flatpak
+    ghostty
   ];
 
-  home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;
+  #home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;
+
+  
+  
 
 
   programs.nh = {
