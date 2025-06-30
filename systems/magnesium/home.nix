@@ -1,4 +1,4 @@
-{ config, pkgs, configFilesDir, services, nix-flatpak, ... }:
+{ config, pkgs, chaotic, configFilesDir, services, nix-flatpak, ... }:
 
 {
   imports =
@@ -23,6 +23,9 @@
     rclone
     equibop
     mission-center
+    beeper
+    fractal
+    rustdesk-flutter
 
     # Gaming
     prismlauncher
@@ -34,12 +37,39 @@
     vscode-fhs
     flatpak
     ghostty
+
+    # bazaar_git
   ];
 
-  #home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;
+  home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;
 
   
-  
+  # chaotic.bazaar = {
+  # enable = true;
+
+  # contentConfig = ''
+  #   sections:
+  #     - title: "Luigi"
+  #       subtitle: "You should change this with services.bazaar.extraContent"
+  #       description: "These are some of my favorite apps!"
+  #       rows: 3
+  #       banner-fit: cover
+  #       appids:
+  #         - net.lutris.Lutris
+  #         - org.mozilla.firefox
+  #         - net.pcsx2.PCSX2
+  #         - org.blender.Blender
+  #         - com.modrinth.ModrinthApp
+  #         - com.system76.Popsicle
+  #         - com.valvesoftware.Steam
+  #         - org.gimp.GIMP
+  #         - org.gnome.Builder
+  #         - org.gnome.Loupe
+  #         - org.inkscape.Inkscape
+  #         - org.kde.krita
+  # '';
+
+  #   };
 
 
   programs.nh = {

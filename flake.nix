@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    #chaotic.url = "github:jumpyvi/nyx/main";
+    #chaotic.url = "path:/home/jumpyvi/Documents/jumpy-nyx";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +36,7 @@
 
       modules = [
         chaotic.nixosModules.default
+
               ./systems/magnesium/configuration.nix
         home-manager.nixosModules.home-manager
         {
@@ -45,6 +46,30 @@
         home-manager.extraSpecialArgs = { inherit configFilesDir; };
         home-manager.sharedModules = [
               nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.chaotic.homeManagerModules.default
+            ];
+        }
+      ];
+	};
+    homelab = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+       inherit system inputs configFilesDir;
+       pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+      };
+
+      modules = [
+        chaotic.nixosModules.default
+
+              ./systems/magnesium/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.jumpyvi = import ./systems/magnesium/home.nix;
+        home-manager.extraSpecialArgs = { inherit configFilesDir; };
+        home-manager.sharedModules = [
+              nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.chaotic.homeManagerModules.default
             ];
         }
       ];
