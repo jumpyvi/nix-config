@@ -2,7 +2,12 @@
 {
     virtualisation.docker.enable = true;
     users.users.jumpyvi.extraGroups = [ "docker" ];
-    virtualisation.docker.rootless.setSocketVariable = true;
+    virtualisation.docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    virtualisation.oci-containers.backend = "docker";
+    
 
     systemd.services.docker.serviceConfig = {
     ExecStartPost = [

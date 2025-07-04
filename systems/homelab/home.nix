@@ -7,12 +7,14 @@
       ../../modules/home/packages/always-cli.nix
       ../../modules/home/packages/firefox.nix
       ../../modules/home/packages/containers.nix
+      ../../modules/home/packages/git.nix
     ];
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # nix related
     nix-output-monitor
+    kdePackages.kate
 
     # Gaming
     lutris
@@ -20,6 +22,7 @@
 
     # Text / IDE
     ghostty
+    nh
   ];
 
   home.file.".config/ghostty/config".source = configFilesDir + /terminals/ghostty.conf;

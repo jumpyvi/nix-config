@@ -60,12 +60,12 @@
       modules = [
         chaotic.nixosModules.default
 
-              ./systems/magnesium/configuration.nix
+              ./systems/homelab/configuration.nix
         home-manager.nixosModules.home-manager
         {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.jumpyvi = import ./systems/magnesium/home.nix;
+        home-manager.users.jumpyvi = import ./systems/homelab/home.nix;
         home-manager.extraSpecialArgs = { inherit configFilesDir; };
         home-manager.sharedModules = [
               nix-flatpak.homeManagerModules.nix-flatpak
